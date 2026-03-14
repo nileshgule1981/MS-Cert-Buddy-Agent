@@ -1,0 +1,26 @@
+{
+  "servers": {
+    "ai102buddy-context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@context7/mcp-server-free"
+      ],
+      
+    },
+    "ai102buddy-markitdown": {
+        "type": "stdio",
+        "command": "uvx",
+        "args": ["markitdown-mcp@0.0.1a4"],
+        "gallery": "https://api.mcp.github.com",
+        "version": "0.0.1a4"      
+    },
+    "ai102buddy-azure": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@azure/mcp@latest", "server", "start"],
+        "gallery": "https://api.mcp.github.com"
+    },
+    
+  }
+}
