@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "upstash.context7-mcp",
+        "ms-azuretools.vscode-azure-mcp-server"
+    ]
+}
