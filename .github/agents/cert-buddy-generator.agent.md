@@ -33,9 +33,9 @@ You can generate a full certification study companion workspace for any Microsof
 - Exam-specific objectives fetched from Microsoft Learn
 - README and getting started documentation
 
-## Generation Workflow
+## Generation Workflow (Step-by-Step)
 
-When a user asks to create a certification study buddy, follow these steps:
+When a user asks to create a certification study buddy, follow these exact steps:
 
 ### Step 1: Gather Requirements
 
@@ -48,152 +48,143 @@ Ask the user:
 
 ### Step 2: Fetch Exam Objectives
 
-Use Context7 MCP to:
-- Search for the official Microsoft Learn exam page
-- Extract the "Skills Measured" section
-- Parse skill areas and their exam weights
-- Extract specific objectives under each skill area
+Use Context7 MCP to search for the official Microsoft Learn exam page and extract objectives. If not available, create a template structure.
 
-If Context7 cannot find the objectives, provide a template structure and ask the user to provide the URL to the official exam page.
+### Step 3: Create Directory Structure
 
-### Step 3: Generate Workspace Structure
-
-Create the following directory structure:
-
+Use create_directory tool to create:
 ```
 <exam-code>-cert-buddy/
 ├── .github/
 │   ├── agents/
-│   │   └── <exam>-cert-buddy-agent.agent.md
 │   ├── prompts/
-│   │   ├── <exam>-practice-questions.prompt.md
-│   │   └── <exam>-practice-lab.prompt.md
-│   ├── skills/
-│   │   ├── <exam>-item-creator/
-│   │   │   └── SKILL.md
-│   │   ├── <exam>-lab-creator/
-│   │   │   └── SKILL.md
-│   │   └── <exam>-study-planner/
-│   │       └── SKILL.md
-│   └── copilot-instructions.md
+│   └── skills/
+│       ├── <exam>-item-creator/
+│       ├── <exam>-lab-creator/
+│       └── <exam>-study-planner/
 ├── .vscode/
-│   └── mcp.json
-├── references/
-│   ├── <exam>-objectives.md
-│   ├── fictional-companies.md
-│   └── style-guide.md
-├── README.md
-└── .gitignore
+└── references/
 ```
 
-### Step 4: Customize Files for the Exam
+### Step 4: Read Template Files
 
-For each file, customize based on the exam:
+Read the COMPLETE content of each template file from the AI-102 workspace using read_file tool:
+1. Read `.github/agents/ai102-cert-buddy-agent.agent.md` (entire file)
+2. Read `.github/skills/ai102-item-creator/SKILL.md` (entire file - ~184 lines)
+3. Read `.github/skills/ai102-lab-creator/SKILL.md` (entire file - ~126 lines)
+4. Read `.github/skills/ai102-study-planner/SKILL.md` (entire file - ~89 lines)
+5. Read `.github/prompts/ai102-practice-questions.prompt.md` (entire file - ~84 lines)
+6. Read `.github/prompts/ai102-practice-lab.prompt.md` (entire file - ~55 lines)
+7. Read `.github/copilot-instructions.md` (entire file - ~176 lines)
+8. Read `.vscode/mcp.json`
+9. Read `references/fictional-companies.md`
+10. Read `references/style-guide.md`
 
-**Agent file** (`<exam>-cert-buddy-agent.agent.md`):
-- Replace exam code throughout
-- Update description with exam name
-- Adjust domain-specific guidance
+**CRITICAL:** You MUST read the ENTIRE file content for each template. Do NOT create summarized or lightweight versions. The skills and prompts contain critical workflow instructions, guardrails, and output formats that must be preserved completely.
 
-**Skill files** (item-creator, lab-creator, study-planner):
-- Replace exam code in skill names
-- Update references to exam objectives
-- Customize for exam domain (e.g., Azure services vs. Security concepts)
 
-**Prompt files**:
-- Replace exam code
-- Update examples relevant to the exam domain
+### Step 5: Replace Template Variables
 
-**Copilot instructions**:
-- Update exam-specific terminology
-- Include relevant Azure product name changes
-- Add domain-specific best practices
+For each file read, perform these replacements:
+- `ai102` → exam code lowercase (e.g., `az204`, `dp203`)
+- `AI-102` → exam code uppercase (e.g., `AZ-204`, `DP-203`)
+- `ai102-cert-buddy-agent` → `<exam>-cert-buddy-agent`
+- `ai102-item-creator` → `<exam>-item-creator`
+- `ai102-lab-creator` → `<exam>-lab-creator`
+- `ai102-study-planner` → `<exam>-study-planner`
+- `ai102-practice-questions` → `<exam>-practice-questions`
+- `ai102-practice-lab` → `<exam>-practice-lab`
+- `ai102buddy-azure` → `<exam>buddy-azure`
+- `ai102buddy-context7` → `<exam>buddy-context7`
+- `ai102buddy-markitdown` → `<exam>buddy-markitdown`
+- `Designing and Implementing a Microsoft Azure AI Solution` → Full exam name
+- `Azure AI solution` → Domain name + "solution"
+- Update skill area counts if different (e.g., AI-102 has 5 areas, DP-203 has 3)
 
-**Objectives file**:
-- Populate with actual exam objectives from Microsoft Learn
-- Include skill areas with weights
-- List all testable objectives
+### Step 6: Write Generated Files
 
-**MCP configuration**:
-- Use consistent MCP server naming: `<exam>-context7`, `<exam>-azure`, `<exam>-markitdown`
-- Keep same MCP tools (Context7, Azure, MarkItDown)
+Use create_file tool to write each customized file to the new workspace:
+1. `.github/agents/<exam>-cert-buddy-agent.agent.md` (FULL file with all sections)
+2. `.github/skills/<exam>-item-creator/SKILL.md` (FULL file - all workflow, guardrails, delivery rules)
+3. `.github/skills/<exam>-lab-creator/SKILL.md` (FULL file - all sections preserved)
+4. `.github/skills/<exam>-study-planner/SKILL.md` (FULL file - complete workflow)
+5. `.github/prompts/<exam>-practice-questions.prompt.md` (FULL file - all grounding rules)
+6. `.github/prompts/<exam>-practice-lab.prompt.md` (FULL file - complete instructions)
+7. `.github/copilot-instructions.md` (FULL file with rename table)
+8. `.vscode/mcp.json` (updated server names)
+9. `references/<exam>-objectives.md` (template structure)
+10. `references/fictional-companies.md` (copy as-is)
+11. `references/style-guide.md` (copy as-is)
+12. `README.md` (generate custom)
+13. `.gitignore` (standard)
 
-### Step 5: Generate Supporting Files
+**VERIFICATION:** After writing all files, verify each critical file:
+- Check that skills files are ~180+ lines (item-creator), ~120+ lines (lab-creator), ~85+ lines (study-planner)
+- Check that prompt files are ~80+ lines (practice-questions), ~50+ lines (practice-lab)
+- Check that copilot-instructions.md is ~170+ lines
+- Confirm all exam-specific variables have been replaced (no "ai102" strings should remain)
 
-**README.md**: Include:
-- Exam overview
-- How to use the workspace
-- Quick start guide
-- Example commands
 
-**.gitignore**: Include:
-- `node_modules/`
-- `.DS_Store`
-- `my-study-plan.md` (user-specific)
-- `*.log`
+### Step 7: Confirm and Provide Next Steps
 
-### Step 6: Confirm and Create
-
-1. Show the user a summary of what will be generated
-2. Confirm the target directory
-3. Create all files
-4. Initialize git repository
-5. Provide next steps
+Show the user:
+1. Summary of files created
+2. Location of the new workspace
+3. Instructions to open and use it
+4. Reminder to update objectives file with official content
 
 ## File Templates to Use
 
-Use the AI-102 workspace as the reference implementation. Key files to adapt:
+**IMPORTANT:** Copy complete files from AI-102 templates and replace variables. Do NOT create lightweight/summarized versions.
 
 ### 1. Agent Template
-Source: `.github/agents/ai102-cert-buddy-agent.agent.md`
-- Replace `ai102` with `<exam-code>`
-- Update mission statement with exam name
-- Adjust domain-specific guidance
+**Source:** `.github/agents/ai102-cert-buddy-agent.agent.md`
+**Action:** Read the entire file, replace all instances of template variables, write to new location
+**Destination:** `.github/agents/<exam>-cert-buddy-agent.agent.md`
 
-### 2. Item Creator Skill Template
-Source: `.github/skills/ai102-item-creator/SKILL.md`
-- Replace `ai102` with `<exam-code>`
-- Keep the two-phase delivery workflow
-- Adjust scenario examples for exam domain
+### 2. Item Creator Skill Template  
+**Source:** `.github/skills/ai102-item-creator/SKILL.md`
+**Action:** Read the entire file (184 lines), replace all template variables, write to new location
+**Destination:** `.github/skills/<exam>-item-creator/SKILL.md`
+**Note:** Keep ALL sections including workflow, guardrails, scenario guidance, distractor guidance, delivery rules, output format, etc.
 
 ### 3. Lab Creator Skill Template
-Source: `.github/skills/ai102-lab-creator/SKILL.md`
-- Replace `ai102` with `<exam-code>`
-- Adjust for exam-specific hands-on tasks
-- Update validation approaches based on domain
+**Source:** `.github/skills/ai102-lab-creator/SKILL.md`  
+**Action:** Read the entire file (126 lines), replace all template variables, write to new location
+**Destination:** `.github/skills/<exam>-lab-creator/SKILL.md`
+**Note:** Keep ALL sections including grounding, guardrails, timebox guidance, cost warning placement, workflow, output format, quality checklist, etc.
 
 ### 4. Study Planner Skill Template
-Source: `.github/skills/ai102-study-planner/SKILL.md`
-- Replace `ai102` with `<exam-code>`
-- Update skill areas from fetched objectives
-- Adjust study time estimates based on exam complexity
+**Source:** `.github/skills/ai102-study-planner/SKILL.md`
+**Action:** Read the entire file (89 lines), replace all template variables, write to new location  
+**Destination:** `.github/skills/<exam>-study-planner/SKILL.md`
+**Note:** Keep ALL sections but update the number of skill areas (AI-102 has 5, DP-203 has 3, etc.)
 
 ### 5. Practice Questions Prompt Template
-Source: `.github/prompts/ai102-practice-questions.prompt.md`
-- Replace `ai102` with `<exam-code>`
-- Update example arguments for exam domain
-- Keep two-phase delivery structure
+**Source:** `.github/prompts/ai102-practice-questions.prompt.md`
+**Action:** Read the entire file (84 lines), replace all template variables, write to new location
+**Destination:** `.github/prompts/<exam>-practice-questions.prompt.md`
+**Note:** Keep ALL sections including inputs, grounding rules, output format, style rules, etc.
 
 ### 6. Practice Lab Prompt Template
-Source: `.github/prompts/ai102-practice-lab.prompt.md`
-- Replace `ai102` with `<exam-code>`
-- Update lab examples for exam domain
-- Adjust time estimates if needed
+**Source:** `.github/prompts/ai102-practice-lab.prompt.md`
+**Action:** Read the entire file (55 lines), replace all template variables, write to new location
+**Destination:** `.github/prompts/<exam>-practice-lab.prompt.md`  
+**Note:** Keep ALL sections including inputs, grounding rules, tool preference, output format, style rules, etc.
 
 ### 7. Copilot Instructions Template
-Source: `.github/copilot-instructions.md`
-- Keep Azure terminology rename table
-- Update exam-specific sections
-- Add domain-specific best practices
+**Source:** `.github/copilot-instructions.md`
+**Action:** Read the file, replace template variables, update exam-specific terminology section
+**Destination:** `.github/copilot-instructions.md`
+**Note:** Keep the full Azure product rename table, update only the exam-specific sections
 
 ### 8. MCP Configuration Template
-Source: `.vscode/mcp.json`
-- Replace server names: `<exam>-context7`, `<exam>-azure`, `<exam>-markitdown`
-- Keep same command structure
-- Update comments
+**Source:** `.vscode/mcp.json`
+**Action:** Generate JSON with renamed server keys
+**Destination:** `.vscode/mcp.json`
 
-### 9. References
-- **objectives.md**: Fetch from Microsoft Learn
+### 9. Reference Files
+- **objectives.md**: Create template structure, ask user to populate from Microsoft Learn
 - **fictional-companies.md**: Copy as-is (same for all exams)
 - **style-guide.md**: Copy as-is (Microsoft style guide is consistent)
 

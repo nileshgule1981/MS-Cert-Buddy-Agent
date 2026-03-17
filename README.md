@@ -85,28 +85,32 @@ python generate_cert_buddy.py --exam AZ-204 \
 
 ## 📁 Generated Workspace Structure
 
+Each generated workspace includes **complete, production-ready files** (not summaries):
+
 ```
 <exam-code>-cert-buddy/
 ├── .github/
 │   ├── agents/
-│   │   └── <exam>-cert-buddy-agent.agent.md      # Main AI agent
+│   │   └── <exam>-cert-buddy-agent.agent.md           # Full agent (120+ lines)
 │   ├── prompts/
-│   │   ├── <exam>-practice-questions.prompt.md   # Question generator
-│   │   └── <exam>-practice-lab.prompt.md         # Lab generator
+│   │   ├── <exam>-practice-questions.prompt.md        # Complete prompt (~84 lines)
+│   │   └── <exam>-practice-lab.prompt.md              # Complete prompt (~55 lines)
 │   ├── skills/
-│   │   ├── <exam>-item-creator/SKILL.md          # Question creation skill
-│   │   ├── <exam>-lab-creator/SKILL.md           # Lab creation skill
-│   │   └── <exam>-study-planner/SKILL.md         # Study planning skill
-│   └── copilot-instructions.md                   # Copilot context
+│   │   ├── <exam>-item-creator/SKILL.md               # Full skill (~184 lines)
+│   │   ├── <exam>-lab-creator/SKILL.md                # Full skill (~126 lines)
+│   │   └── <exam>-study-planner/SKILL.md              # Full skill (~89 lines)
+│   └── copilot-instructions.md                        # Complete instructions (~176 lines)
 ├── .vscode/
-│   └── mcp.json                                   # MCP server config
+│   └── mcp.json                                        # MCP server config
 ├── references/
-│   ├── <exam>-objectives.md                       # Official exam objectives
-│   ├── fictional-companies.md                     # Scenario companies
-│   └── style-guide.md                            # Microsoft style guide
-├── README.md                                      # Getting started guide
+│   ├── <exam>-objectives.md                            # Exam objectives template
+│   ├── fictional-companies.md                          # Scenario companies (264 lines)
+│   └── style-guide.md                                 # Microsoft style guide
+├── README.md                                           # Getting started guide
 └── .gitignore
 ```
+
+**Total:** ~1200+ lines of complete, ready-to-use configuration and documentation!
 
 ## 🛠️ How It Works
 

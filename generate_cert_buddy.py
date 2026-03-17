@@ -28,7 +28,10 @@ class CertBuddyGenerator:
         self.exam_name = exam_name
         self.domain = domain
         self.output_dir = Path(output_dir)
-        self.template_dir = Path(__file__).parent.parent
+        self.template_dir = Path(__file__).parent
+        print(f"📁 Template directory: {self.template_dir}")
+        print(f"📁 Output directory: {self.output_dir}")
+        print()
 
     def generate(self) -> None:
         """Generate the complete workspace."""
@@ -52,14 +55,21 @@ class CertBuddyGenerator:
         self._generate_readme()
         self._generate_gitignore()
 
-        print()
-        print("✅ Workspace generated successfully!")
-        print()
-        print("📂 Next steps:")
-        print(f"   1. cd {self.output_dir}")
-        print(f"   2. code .")
-        print(f"   3. Ask @{self.exam_code}-cert-buddy-agent for help")
-        print()
+        # Verify generation
+        if self._verify_generation():
+            print()
+            print("✅ Workspace generated successfully!")
+            print()
+            print("📂 Next steps:")
+            print(f"   1. cd {self.output_dir}")
+            print(f"   2. code .")
+            print(f"   3. Update references/{self.exam_code}-objectives.md with official exam objectives")
+            print(f"   4. Ask @{self.exam_code}-cert-buddy-agent for help")
+            print()
+        else:
+            print()
+            print("⚠️  Workspace generated with warnings. Review the files above.")
+            print()
 
     def _create_directory_structure(self) -> None:
         """Create the workspace directory structure."""
@@ -115,7 +125,7 @@ class CertBuddyGenerator:
 
     def _generate_skill_files(self) -> None:
         """Generate skill definition files."""
-        print("🎯 Generating skill files...")
+        print("🎯 Generating skill files from full templates...")
 
         skills = ["item-creator", "lab-creator", "study-planner"]
 
@@ -123,77 +133,49 @@ class CertBuddyGenerator:
             source = self.template_dir / ".github" / "skills" / f"ai102-{skill}" / "SKILL.md"
             dest = self.output_dir / ".github" / "skills" / f"{self.exam_code}-{skill}" / "SKILL.md"
 
-            if source.exists():
-                content = source.read_text()
-                content = self._replace_template_vars(content)
-                dest.write_text(content)
+            if not source.exists():
+                print(f"   ❌ ERROR: Template not found: {source}")
+                print(f"      Expected path: {source.absolute()}")
+                continue
+
+            # Read the ENTIRE template file
+            content = source.read_text()
+            original_size = len(content)
+            
+            # Replace all template variables
+            content = self._replace_template_vars(content)
+            
+            # Write the complete file
+            dest.write_text(content)
+            print(f"   ✅ {skill}: {len(content.splitlines())} lines ({original_size} → {len(content)} chars)")
+
 
     def _generate_prompt_files(self) -> None:
         """Generate prompt template files."""
-        print("📝 Generating prompt files...")
+        print("📝 Generating prompt files from full templates...")
 
         prompts = ["practice-questions", "practice-lab"]
 
         for prompt in prompts:
-            # Check if prompt file exists
             source = self.template_dir / ".github" / "prompts" / f"ai102-{prompt}.prompt.md"
             dest = self.output_dir / ".github" / "prompts" / f"{self.exam_code}-{prompt}.prompt.md"
 
-            if source.exists():
-                content = source.read_text()
-                content = self._replace_template_vars(content)
-                dest.write_text(content)
-            else:
-                # Create a basic prompt template if source doesn't exist
-                self._create_basic_prompt(dest, prompt)
+            if not source.exists():
+                print(f"   ❌ ERROR: Template not found: {source}")
+                print(f"      Expected path: {source.absolute()}")
+                continue
 
-    def _create_basic_prompt(self, dest: Path, prompt_type: str) -> None:
-        """Create a basic prompt template if source doesn't exist."""
-        if prompt_type == "practice-questions":
-            content = f"""---
-name: {self.exam_code}-practice-question
-description: "Generate one exam-realistic {self.exam_code_upper} practice question grounded in Microsoft Learn."
-argument-hint: "skillArea='...' objective='...' bloom='Apply' difficulty='medium' itemType='multiple-choice'"
-agent: {self.exam_code}-cert-buddy-agent
-tools:
-  - {self.exam_code}buddy-azure/*
-  - {self.exam_code}buddy-context7/*
-  - {self.exam_code}buddy-markitdown/*
----
+            # Read the ENTIRE template file
+            content = source.read_text()
+            original_size = len(content)
+            
+            # Replace all template variables
+            content = self._replace_template_vars(content)
+            
+            # Write the complete file
+            dest.write_text(content)
+            print(f"   ✅ {prompt}: {len(content.splitlines())} lines ({original_size} → {len(content)} chars)")
 
-# {self.exam_code_upper} Practice Question
-
-Generate **ONE** original, exam-realistic **{self.exam_code_upper}** practice question.
-
-## Use this skill
-
-You must follow the workspace skill **{self.exam_code}-item-creator** for item structure, guardrails, and delivery rules.
-
-(Follow the same structure as AI-102 practice questions prompt)
-"""
-        else:  # practice-lab
-            content = f"""---
-name: {self.exam_code}-practice-lab
-description: "Generate a hands-on {self.exam_code_upper} practice lab (10-20 minutes)."
-argument-hint: "topic='...' duration='15' tool='Azure CLI'"
-agent: {self.exam_code}-cert-buddy-agent
-tools:
-  - {self.exam_code}buddy-azure/*
-  - {self.exam_code}buddy-context7/*
----
-
-# {self.exam_code_upper} Practice Lab
-
-Generate a hands-on practice lab for **{self.exam_code_upper}**.
-
-## Use this skill
-
-You must follow the workspace skill **{self.exam_code}-lab-creator** for lab structure and validation.
-
-(Follow the same structure as AI-102 practice lab prompt)
-"""
-
-        dest.write_text(content)
 
     def _generate_copilot_instructions(self) -> None:
         """Generate copilot instructions file."""
@@ -202,10 +184,64 @@ You must follow the workspace skill **{self.exam_code}-lab-creator** for lab str
         source = self.template_dir / ".github" / "copilot-instructions.md"
         dest = self.output_dir / ".github" / "copilot-instructions.md"
 
-        if source.exists():
-            content = source.read_text()
-            content = self._replace_template_vars(content)
-            dest.write_text(content)
+        if not source.exists():
+            print(f"   ❌ ERROR: Template not found: {source}")
+            return
+
+        content = source.read_text()
+        original_size = len(content)
+        content = self._replace_template_vars(content)
+        dest.write_text(content)
+        print(f"   ✅ Copilot instructions: {len(content.splitlines())} lines ({original_size} → {len(content)} chars)")
+
+    def _generate_agent_file(self) -> None:
+        """Generate the agent configuration file."""
+        print("🤖 Generating agent configuration...")
+
+        source = self.template_dir / ".github" / "agents" / "ai102-cert-buddy-agent.agent.md"
+        dest = self.output_dir / ".github" / "agents" / f"{self.exam_code}-cert-buddy-agent.agent.md"
+
+        if not source.exists():
+            print(f"   ❌ ERROR: Template not found: {source}")
+            return
+
+        content = source.read_text()
+        original_size = len(content)
+        content = self._replace_template_vars(content)
+        dest.write_text(content)
+        print(f"   ✅ Agent file: {len(content.splitlines())} lines ({original_size} → {len(content)} chars)")
+
+    def _verify_generation(self) -> bool:
+        """Verify that all critical files were generated correctly."""
+        print()
+        print("🔍 Verifying generated files...")
+        
+        critical_files = {
+            f".github/agents/{self.exam_code}-cert-buddy-agent.agent.md": 200,
+            f".github/skills/{self.exam_code}-item-creator/SKILL.md": 180,
+            f".github/skills/{self.exam_code}-lab-creator/SKILL.md": 120,
+            f".github/skills/{self.exam_code}-study-planner/SKILL.md": 85,
+            f".github/prompts/{self.exam_code}-practice-questions.prompt.md": 80,
+            f".github/prompts/{self.exam_code}-practice-lab.prompt.md": 50,
+            ".github/copilot-instructions.md": 170,
+        }
+        
+        all_good = True
+        for file_path, min_lines in critical_files.items():
+            full_path = self.output_dir / file_path
+            if not full_path.exists():
+                print(f"   ❌ Missing: {file_path}")
+                all_good = False
+            else:
+                lines = len(full_path.read_text().splitlines())
+                if lines < min_lines:
+                    print(f"   ⚠️  Too short: {file_path} ({lines} lines, expected ~{min_lines}+)")
+                    all_good = False
+                else:
+                    print(f"   ✅ {file_path} ({lines} lines)")
+        
+        return all_good
+
 
     def _generate_mcp_config(self) -> None:
         """Generate MCP configuration file."""
