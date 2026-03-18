@@ -45,12 +45,14 @@ Automatically generates a complete, production-ready study workspace for **any M
 
 ## 🚀 Quick Start
 
+> **See also:** [`USAGE_GUIDE.md`](USAGE_GUIDE.md) for detailed usage instructions and [`EXAMPLE_AZ204.md`](EXAMPLE_AZ204.md) for a sample generated output.
+
 ### Option 1: Use the Generator Agent (Easiest)
 
 1. Clone this repository (the AI-102 template):
    ```bash
    git clone <this-repo-url>
-   cd ai-102-cert-buddy
+   cd MS-cert-buddy-agent
    code .
    ```
 
@@ -83,6 +85,37 @@ python generate_cert_buddy.py --exam AZ-204 \
 4. Customize copilot-instructions.md
 5. Adjust agent, prompts, and skills
 
+## 📁 This Repository's Structure
+
+```
+MS-Cert-Buddy-Agent/                                    # Template/generator repo (AI-102 reference)
+├── .github/
+│   ├── agents/
+│   │   ├── ai102-cert-buddy-agent.agent.md             # AI-102 study buddy agent
+│   │   └── cert-buddy-generator.agent.md               # Generator agent for new exams
+│   ├── prompts/
+│   │   ├── ai102-practice-questions.prompt.md          # Practice question prompt
+│   │   └── ai102-practice-lab.prompt.md                # Practice lab prompt
+│   ├── skills/
+│   │   ├── ai102-item-creator/SKILL.md                 # Exam item generation skill
+│   │   ├── ai102-lab-creator/SKILL.md                  # Lab creation skill
+│   │   └── ai102-study-planner/SKILL.md                # Study plan skill
+│   └── copilot-instructions.md                         # Copilot workspace instructions
+├── .vscode/
+│   ├── extensions.json                                  # Recommended VS Code extensions
+│   └── mcp.json                                         # MCP server configuration
+├── references/
+│   ├── ai102-objectives.md                              # AI-102 exam objectives
+│   ├── fictional-companies.md                           # Scenario companies for questions
+│   └── style-guide.md                                  # Microsoft writing style guide
+├── EXAMPLE_AZ204.md                                     # Example generated output for AZ-204
+├── generate_cert_buddy.py                               # Python script for generating new workspaces
+├── my-study-plan.md                                     # Sample generated study plan
+├── TEMPLATE_README.md                                   # README template for generated workspaces
+├── USAGE_GUIDE.md                                       # Detailed usage instructions
+└── README.md                                            # This file
+```
+
 ## 📁 Generated Workspace Structure
 
 Each generated workspace includes **complete, production-ready files** (not summaries):
@@ -91,22 +124,24 @@ Each generated workspace includes **complete, production-ready files** (not summ
 <exam-code>-cert-buddy/
 ├── .github/
 │   ├── agents/
-│   │   └── <exam>-cert-buddy-agent.agent.md           # Full agent (120+ lines)
+│   │   ├── <exam>-cert-buddy-agent.agent.md            # Full agent (120+ lines)
+│   │   └── cert-buddy-generator.agent.md               # Generator agent
 │   ├── prompts/
-│   │   ├── <exam>-practice-questions.prompt.md        # Complete prompt (~84 lines)
-│   │   └── <exam>-practice-lab.prompt.md              # Complete prompt (~55 lines)
+│   │   ├── <exam>-practice-questions.prompt.md         # Complete prompt (~84 lines)
+│   │   └── <exam>-practice-lab.prompt.md               # Complete prompt (~55 lines)
 │   ├── skills/
-│   │   ├── <exam>-item-creator/SKILL.md               # Full skill (~184 lines)
-│   │   ├── <exam>-lab-creator/SKILL.md                # Full skill (~126 lines)
-│   │   └── <exam>-study-planner/SKILL.md              # Full skill (~89 lines)
-│   └── copilot-instructions.md                        # Complete instructions (~176 lines)
+│   │   ├── <exam>-item-creator/SKILL.md                # Full skill (~184 lines)
+│   │   ├── <exam>-lab-creator/SKILL.md                 # Full skill (~126 lines)
+│   │   └── <exam>-study-planner/SKILL.md               # Full skill (~89 lines)
+│   └── copilot-instructions.md                         # Complete instructions (~176 lines)
 ├── .vscode/
-│   └── mcp.json                                        # MCP server config
+│   ├── extensions.json                                  # Recommended VS Code extensions
+│   └── mcp.json                                         # MCP server config
 ├── references/
-│   ├── <exam>-objectives.md                            # Exam objectives template
-│   ├── fictional-companies.md                          # Scenario companies (264 lines)
-│   └── style-guide.md                                 # Microsoft style guide
-├── README.md                                           # Getting started guide
+│   ├── <exam>-objectives.md                             # Exam objectives template
+│   ├── fictional-companies.md                           # Scenario companies (264 lines)
+│   └── style-guide.md                                  # Microsoft style guide
+├── README.md                                            # Getting started guide
 └── .gitignore
 ```
 
