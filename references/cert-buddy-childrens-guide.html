@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Illustrated Children's Guide to Cert Buddy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f0f4f8;
+      color: #2d3748;
+    }
+
+    /* ── PAGE LAYOUT ─────────────────────────────────────────── */
+    .page {
+      width: 960px;
+      min-height: 600px;
+      margin: 32px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+    }
+
+    .illustration {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      min-height: 380px;
+    }
+
+    .caption {
+      padding: 24px 40px 28px;
+      border-top: 2px dashed #e2e8f0;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #4a5568;
+      background: #fafafa;
+    }
+
+    /* ── COVER ───────────────────────────────────────────────── */
+    .cover {
+      background: linear-gradient(160deg, #0f2d5e 0%, #1a56db 55%, #63a4f5 100%);
+      min-height: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 80px;
+      color: white;
+    }
+
+    .cover-badge {
+      font-family: 'Georgia', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 12px;
+    }
+
+    .cover-title {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .cover-subtitle {
+      font-size: 20px;
+      opacity: 0.85;
+      font-style: italic;
+      margin-bottom: 48px;
+    }
+
+    .cover-scene {
+      position: relative;
+      width: 420px;
+      height: 260px;
+    }
+
+    /* ── SECTION SLIDE (concept explainer) ───────────────────── */
+    .slide {
+      min-height: 480px;
+      padding: 0;
+    }
+
+    .slide-header {
+      padding: 32px 48px 20px;
+      background: linear-gradient(135deg, #1a56db, #3b82f6);
+      color: white;
+    }
+
+    .slide-header h2 {
+      font-size: 38px;
+      font-weight: 800;
+    }
+
+    .slide-divider {
+      height: 4px;
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      margin: 0;
+    }
+
+    .slide-body {
+      display: flex;
+      gap: 0;
+      flex: 1;
+    }
+
+    .slide-bullets {
+      flex: 1;
+      padding: 28px 40px;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .slide-bullets ul {
+      list-style: none;
+    }
+
+    .slide-bullets li {
+      font-size: 16px;
+      color: #1a56db;
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .slide-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #fbbf24;
+    }
+
+    .slide-bullets li span {
+      display: block;
+      font-weight: 400;
+      color: #555;
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .slide-diagram {
+      flex: 1.2;
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── CREDITS ─────────────────────────────────────────────── */
+    .credits {
+      background: #f8f9fa;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .credits p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* ── SVG helpers ─────────────────────────────────────────── */
+    svg text { font-family: 'Georgia', serif; }
+
+    /* ── PRINT ───────────────────────────────────────────────── */
+    @media print {
+      body { background: white; }
+      .page { margin: 0; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <p class="cover-badge">The Illustrated</p>
+    <h1 class="cover-title">Children's Guide<br/>to Cert Buddy</h1>
+    <p class="cover-subtitle">A tale of study, practice, and passing exams</p>
+
+    <!-- Cover illustration: student + floating question marks + certificate -->
+    <svg width="420" height="240" viewBox="0 0 420 240">
+      <!-- Sky / background gradient -->
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+        </linearGradient>
+        <linearGradient id="certGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#fef9c3"/>
+          <stop offset="100%" stop-color="#fde68a"/>
+        </linearGradient>
+      </defs>
+      <rect width="420" height="240" fill="url(#skyGrad)" rx="12"/>
+
+      <!-- Floating clouds -->
+      <ellipse cx="60" cy="40" rx="38" ry="20" fill="white" opacity="0.25"/>
+      <ellipse cx="85" cy="32" rx="28" ry="18" fill="white" opacity="0.25"/>
+      <ellipse cx="340" cy="55" rx="40" ry="18" fill="white" opacity="0.2"/>
+
+      <!-- Floating question marks -->
+      <text x="30" y="110" font-size="36" fill="#fbbf24" opacity="0.9" font-weight="bold">?</text>
+      <text x="370" y="80" font-size="28" fill="#fbbf24" opacity="0.7" font-weight="bold">?</text>
+      <text x="60" y="180" font-size="22" fill="#fbbf24" opacity="0.6" font-weight="bold">?</text>
+
+      <!-- Desk -->
+      <rect x="120" y="180" width="200" height="12" rx="4" fill="#92400e"/>
+      <rect x="130" y="192" width="10" height="40" rx="3" fill="#78350f"/>
+      <rect x="300" y="192" width="10" height="40" rx="3" fill="#78350f"/>
+
+      <!-- Open book on desk -->
+      <path d="M150 180 Q210 160 210 160 Q210 160 270 180 L270 182 Q210 162 210 162 Q210 162 150 182 Z" fill="#dbeafe"/>
+      <line x1="210" y1="160" x2="210" y2="182" stroke="#93c5fd" stroke-width="1.5"/>
+      <text x="163" y="175" font-size="7" fill="#1d4ed8">AI-102</text>
+      <text x="218" y="175" font-size="7" fill="#1d4ed8">AZ-204</text>
+
+      <!-- Student character (simplified owl-like figure) -->
+      <!-- Body -->
+      <ellipse cx="210" cy="142" rx="28" ry="32" fill="#fbbf24"/>
+      <!-- Wings hint -->
+      <ellipse cx="185" cy="148" rx="12" ry="16" fill="#f59e0b" opacity="0.8"/>
+      <ellipse cx="235" cy="148" rx="12" ry="16" fill="#f59e0b" opacity="0.8"/>
+      <!-- Head -->
+      <circle cx="210" cy="108" r="26" fill="#fbbf24"/>
+      <!-- Graduation cap -->
+      <rect x="193" y="84" width="34" height="6" rx="2" fill="#1e3a8a"/>
+      <rect x="207" y="78" width="6" height="8" rx="1" fill="#1e3a8a"/>
+      <line x1="227" y1="84" x2="234" y2="96" stroke="#f59e0b" stroke-width="2"/>
+      <circle cx="234" cy="96" r="3" fill="#f59e0b"/>
+      <!-- Eyes -->
+      <circle cx="202" cy="107" r="7" fill="white"/>
+      <circle cx="218" cy="107" r="7" fill="white"/>
+      <circle cx="204" cy="108" r="4" fill="#1e3a8a"/>
+      <circle cx="220" cy="108" r="4" fill="#1e3a8a"/>
+      <circle cx="205" cy="107" r="1.5" fill="white"/>
+      <circle cx="221" cy="107" r="1.5" fill="white"/>
+      <!-- Beak -->
+      <polygon points="210,115 205,121 215,121" fill="#f59e0b"/>
+      <!-- Smile -->
+      <path d="M204 122 Q210 127 216 122" stroke="#92400e" stroke-width="1.5" fill="none"/>
+
+      <!-- Certificate floating upper-right -->
+      <rect x="320" y="30" width="80" height="58" rx="5" fill="url(#certGrad)" stroke="#f59e0b" stroke-width="2"/>
+      <text x="360" y="50" font-size="18" fill="#b45309" text-anchor="middle">🏆</text>
+      <text x="360" y="65" font-size="8" fill="#92400e" text-anchor="middle" font-weight="bold">YOUR EXAM</text>
+      <text x="360" y="76" font-size="7" fill="#92400e" text-anchor="middle">CERTIFIED</text>
+      <!-- Ribbon on cert -->
+      <line x1="348" y1="88" x2="348" y2="100" stroke="#ef4444" stroke-width="2"/>
+      <line x1="372" y1="88" x2="372" y2="100" stroke="#ef4444" stroke-width="2"/>
+      <path d="M342 95 Q360 103 378 95" stroke="#ef4444" stroke-width="2" fill="none"/>
+    </svg>
+
+    <p style="font-size:13px; opacity:0.6; margin-top:20px;">
+      Written for every learner who ever stared at a certification outline and wondered, "Now what?"
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 — CREDITS
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="credits">
+    <!-- Logo -->
+    <svg width="120" height="40" viewBox="0 0 120 40">
+      <rect width="120" height="40" rx="8" fill="#1a56db"/>
+      <text x="60" y="26" font-size="16" fill="white" text-anchor="middle" font-weight="bold" font-family="Arial">Cert Buddy</text>
+    </svg>
+    <p style="font-size:22px; font-weight:700; color:#1a56db;">Cert Buddy</p>
+    <p>Brought to you by the Cert Buddy generator template</p>
+    <p style="margin-top:16px; font-size:13px; color:#888;">
+      Inspired by <em>The Illustrated Children's Guide to Kubernetes</em> by Matt Butcher (DEIS).<br/>
+      Exam names and Microsoft product names used are trademarks of Microsoft Corporation.<br/>
+      Character "Certy the Owl" is original to this guide.
+    </p>
+    <p style="margin-top:16px; font-size:13px; color:#888;">
+      Dedicated to every engineer who has opened Microsoft Learn at midnight<br/>
+      the week before their certification exam.
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 3 — THE BEGINNING (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(180deg,#e0f2fe 0%,#bfdbfe 100%);">
+    <svg width="640" height="320" viewBox="0 0 640 320">
+      <!-- Landscape -->
+      <rect width="640" height="320" fill="#bfdbfe" rx="0"/>
+      <ellipse cx="320" cy="380" rx="540" ry="200" fill="#93c5fd" opacity="0.5"/>
+
+      <!-- Mountains of documentation in background -->
+      <polygon points="80,220 160,80 240,220" fill="#1d4ed8" opacity="0.18"/>
+      <polygon points="160,220 260,60 360,220" fill="#1d4ed8" opacity="0.22"/>
+      <polygon points="320,220 420,90 520,220" fill="#1d4ed8" opacity="0.16"/>
+
+      <!-- Pile of confusing books / docs on the left -->
+      <rect x="40" y="200" width="50" height="70" rx="4" fill="#ef4444" transform="rotate(-8,65,235)"/>
+      <rect x="55" y="190" width="50" height="70" rx="4" fill="#f97316" transform="rotate(5,80,225)"/>
+      <rect x="35" y="210" width="50" height="65" rx="4" fill="#8b5cf6" transform="rotate(-12,60,243)"/>
+      <text x="57" y="240" font-size="7" fill="white" transform="rotate(-8,57,240)" text-anchor="middle">AZ-900</text>
+      <text x="80" y="230" font-size="7" fill="white" transform="rotate(5,80,230)" text-anchor="middle">AI-102</text>
+      <text x="55" y="248" font-size="7" fill="white" transform="rotate(-12,55,248)" text-anchor="middle">SC-200</text>
+
+      <!-- Confused student (left centre) -->
+      <!-- Body -->
+      <ellipse cx="220" cy="230" rx="30" ry="38" fill="#fde68a"/>
+      <!-- Arms up in confusion -->
+      <line x1="195" y1="215" x2="170" y2="190" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
+      <line x1="245" y1="215" x2="270" y2="190" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
+      <!-- Head -->
+      <circle cx="220" cy="190" r="28" fill="#fde68a"/>
+      <!-- Eyes – worried -->
+      <ellipse cx="211" cy="187" rx="6" ry="7" fill="white"/>
+      <ellipse cx="229" cy="187" rx="6" ry="7" fill="white"/>
+      <circle cx="212" cy="188" r="3.5" fill="#1e3a8a"/>
+      <circle cx="230" cy="188" r="3.5" fill="#1e3a8a"/>
+      <!-- Sweat drop -->
+      <ellipse cx="238" cy="172" rx="4" ry="6" fill="#93c5fd"/>
+      <!-- Frown -->
+      <path d="M212 200 Q220 196 228 200" stroke="#92400e" stroke-width="2" fill="none"/>
+
+      <!-- Question marks floating around student -->
+      <text x="170" y="165" font-size="26" fill="#ef4444" font-weight="bold" opacity="0.85">?</text>
+      <text x="255" y="158" font-size="20" fill="#8b5cf6" font-weight="bold" opacity="0.8">?</text>
+      <text x="190" y="145" font-size="16" fill="#f97316" font-weight="bold" opacity="0.75">?</text>
+
+      <!-- Speech bubble -->
+      <rect x="270" y="140" width="200" height="60" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+      <polygon points="270,168 250,178 272,178" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="370" y="164" font-size="12" fill="#374151" text-anchor="middle">Which exam should I</text>
+      <text x="370" y="180" font-size="12" fill="#374151" text-anchor="middle">start with first? 😰</text>
+
+      <!-- Ground -->
+      <rect x="0" y="290" width="640" height="30" fill="#3b82f6" opacity="0.3" rx="4"/>
+    </svg>
+  </div>
+  <div class="caption">
+    Once upon a time, there was a learner named Alex. Alex wanted to earn <strong>a Microsoft certification</strong>,
+    but could not decide whether to start with AI-102, AZ-204, SC-900, or something else entirely. Every exam had
+    a different skills outline, different product names, and a different style of practice. Alex stared at the
+    screen, surrounded by a tower of study guides, and whispered, "Where do I even begin?"
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 4 — CONCEPT: THE EXAM (info slide)
+══════════════════════════════════════════════════════════ -->
+<div class="page slide">
+  <div class="slide-header"><h2>Pick an Exam</h2></div>
+  <div class="slide-divider"></div>
+  <div class="slide-body">
+    <div class="slide-bullets">
+      <ul>
+        <li>Works for any Microsoft certification exam
+          <span>Azure, data, security, Microsoft 365, fundamentals, and more</span>
+        </li>
+        <li>Starts with the exam code and official name
+          <span>Examples: AI-102, AZ-204, SC-900</span>
+        </li>
+        <li>Builds a dedicated workspace for that exam
+          <span>Agent, prompts, skills, references, and MCP configuration</span>
+        </li>
+        <li>Adapts the content to the exam family
+          <span>Hands-on Azure labs for Azure exams; more conceptual focus for fundamentals</span>
+        </li>
+        <li>AI-102 can still be used as a concrete example
+          <span>This guide uses AI-102 examples after the generic setup</span>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-diagram">
+      <svg width="280" height="220" viewBox="0 0 280 220">
+        <rect x="18" y="20" width="72" height="72" rx="12" fill="#1d4ed8"/>
+        <text x="54" y="50" font-size="14" fill="white" text-anchor="middle" font-weight="bold">AI-102</text>
+        <text x="54" y="68" font-size="8" fill="#dbeafe" text-anchor="middle">Azure AI</text>
+
+        <rect x="104" y="20" width="72" height="72" rx="12" fill="#7c3aed"/>
+        <text x="140" y="50" font-size="14" fill="white" text-anchor="middle" font-weight="bold">AZ-204</text>
+        <text x="140" y="68" font-size="8" fill="#ede9fe" text-anchor="middle">Development</text>
+
+        <rect x="190" y="20" width="72" height="72" rx="12" fill="#059669"/>
+        <text x="226" y="50" font-size="14" fill="white" text-anchor="middle" font-weight="bold">SC-900</text>
+        <text x="226" y="68" font-size="8" fill="#dcfce7" text-anchor="middle">Security</text>
+
+        <line x1="54" y1="102" x2="140" y2="142" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+        <line x1="140" y1="102" x2="140" y2="142" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+        <line x1="226" y1="102" x2="140" y2="142" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+
+        <rect x="88" y="142" width="104" height="54" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+        <text x="140" y="164" font-size="11" fill="#1e293b" text-anchor="middle" font-weight="bold">Cert Buddy</text>
+        <text x="140" y="179" font-size="8" fill="#64748b" text-anchor="middle">generates a workspace</text>
+        <text x="140" y="191" font-size="8" fill="#64748b" text-anchor="middle">for the chosen exam</text>
+      </svg>
+    </div>
+  </div>
+  <div class="caption">
+    Cert Buddy does not lock you into a single exam. You choose the certification code, the official exam name,
+    and the domain, and Cert Buddy generates a workspace tailored to that exam. In the rest of this guide,
+    AI-102 is used as the running example, but the same structure works for AZ-204, SC-900, DP-203, and other
+    Microsoft certification paths.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 5 — CERTY APPEARS (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(160deg,#fef9c3 0%,#fde68a 60%,#fbbf24 100%);">
+    <svg width="640" height="300" viewBox="0 0 640 300">
+      <!-- Warm sunny background -->
+      <circle cx="320" cy="-20" r="140" fill="#fef08a" opacity="0.5"/>
+      <!-- Ground -->
+      <rect x="0" y="260" width="640" height="40" fill="#d97706" opacity="0.3" rx="8"/>
+
+      <!-- Alex (student) on the left, looking hopeful -->
+      <ellipse cx="160" cy="220" rx="28" ry="35" fill="#fde68a"/>
+      <circle cx="160" cy="182" r="26" fill="#fde68a"/>
+      <!-- Happy eyes -->
+      <ellipse cx="152" cy="180" rx="5" ry="6" fill="white"/>
+      <ellipse cx="168" cy="180" rx="5" ry="6" fill="white"/>
+      <circle cx="153" cy="181" r="3" fill="#1e3a8a"/>
+      <circle cx="169" cy="181" r="3" fill="#1e3a8a"/>
+      <circle cx="154" cy="180" r="1" fill="white"/>
+      <circle cx="170" cy="180" r="1" fill="white"/>
+      <!-- Smile -->
+      <path d="M153 192 Q160 198 167 192" stroke="#92400e" stroke-width="2" fill="none"/>
+
+      <!-- Certy the Owl — Cert Buddy mascot -->
+      <!-- Body -->
+      <ellipse cx="400" cy="210" rx="52" ry="58" fill="#1d4ed8"/>
+      <!-- Wing left -->
+      <ellipse cx="352" cy="222" rx="20" ry="32" fill="#1e40af" opacity="0.9"/>
+      <!-- Wing right -->
+      <ellipse cx="448" cy="222" rx="20" ry="32" fill="#1e40af" opacity="0.9"/>
+      <!-- Belly -->
+      <ellipse cx="400" cy="222" rx="32" ry="38" fill="#bfdbfe"/>
+      <!-- Head -->
+      <circle cx="400" cy="148" r="46" fill="#1d4ed8"/>
+      <!-- Ear tufts -->
+      <polygon points="375,110 368,84 385,108" fill="#1d4ed8"/>
+      <polygon points="425,110 432,84 415,108" fill="#1d4ed8"/>
+      <!-- Eyes (large, bright) -->
+      <circle cx="386" cy="145" r="16" fill="white"/>
+      <circle cx="414" cy="145" r="16" fill="white"/>
+      <circle cx="388" cy="147" r="9" fill="#1e3a8a"/>
+      <circle cx="416" cy="147" r="9" fill="#1e3a8a"/>
+      <circle cx="390" cy="144" r="3" fill="white"/>
+      <circle cx="418" cy="144" r="3" fill="white"/>
+      <!-- Beak -->
+      <polygon points="400,158 393,166 407,166" fill="#f59e0b"/>
+      <!-- Graduation cap -->
+      <rect x="373" y="100" width="54" height="10" rx="3" fill="#0f172a"/>
+      <rect x="396" y="88" width="8" height="14" rx="2" fill="#0f172a"/>
+      <line x1="418" y1="102" x2="428" y2="118" stroke="#fbbf24" stroke-width="3"/>
+      <circle cx="428" cy="118" r="5" fill="#fbbf24"/>
+      <!-- Name badge on belly -->
+      <rect x="374" y="218" width="52" height="26" rx="5" fill="white" stroke="#93c5fd" stroke-width="2"/>
+      <text x="400" y="228" font-size="7" fill="#1e3a8a" text-anchor="middle" font-weight="bold">HELLO, I AM</text>
+      <text x="400" y="239" font-size="9" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Certy!</text>
+
+      <!-- Speech bubble from Certy -->
+      <rect x="460" y="80" width="160" height="80" rx="14" fill="white" stroke="#bfdbfe" stroke-width="2.5"/>
+      <polygon points="460,130 438,138 462,140" fill="white" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="540" y="108" font-size="11" fill="#374151" text-anchor="middle">Hello, Alex! I am</text>
+      <text x="540" y="124" font-size="11" fill="#374151" text-anchor="middle">Cert Buddy — your</text>
+      <text x="540" y="140" font-size="11" fill="#374151" text-anchor="middle">AI study companion!</text>
+
+      <!-- Stars/sparkles around Certy -->
+      <text x="346" y="88" font-size="18" fill="#fbbf24">✦</text>
+      <text x="460" y="60" font-size="14" fill="#fbbf24">✦</text>
+      <text x="310" y="145" font-size="10" fill="#fbbf24">✦</text>
+    </svg>
+  </div>
+  <div class="caption">
+    Just as Alex was about to close the laptop and give up, a friendly owl appeared on the screen.
+    "Hello there, learner!" the owl said cheerfully, adjusting the tiny graduation cap on its head.
+    "My name is <strong>Certy</strong>, and I am your Cert Buddy — a study companion powered by GitHub Copilot.
+    I can help you prepare for any Microsoft certification exam by generating an exam-specific workspace,
+    then guiding you with practice questions, hands-on labs when the exam supports them, and a personalised
+    study plan. Shall we begin?"
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 6 — CONCEPT: CERT BUDDY (info slide)
+══════════════════════════════════════════════════════════ -->
+<div class="page slide">
+  <div class="slide-header"><h2>Cert Buddy</h2></div>
+  <div class="slide-divider"></div>
+  <div class="slide-body">
+    <div class="slide-bullets">
+      <ul>
+        <li>Powered by GitHub Copilot + MCP servers</li>
+        <li>Three core capabilities:
+          <span>Practice Questions · Micro-Labs · Study Planner</span>
+        </li>
+        <li>Grounded in Microsoft Learn documentation</li>
+        <li>Works for any Microsoft certification</li>
+        <li>Lives right inside VS Code</li>
+      </ul>
+    </div>
+    <div class="slide-diagram">
+      <svg width="270" height="200" viewBox="0 0 270 200">
+        <!-- Central hub -->
+        <circle cx="135" cy="100" r="36" fill="#1d4ed8"/>
+        <text x="135" y="95" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Cert</text>
+        <text x="135" y="110" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Buddy</text>
+
+        <!-- Spoke: Questions -->
+        <line x1="102" y1="74" x2="60" y2="38" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4"/>
+        <circle cx="48" cy="28" r="26" fill="#3b82f6" opacity="0.9"/>
+        <text x="48" y="24" font-size="8" fill="white" text-anchor="middle">Practice</text>
+        <text x="48" y="36" font-size="8" fill="white" text-anchor="middle">Questions</text>
+
+        <!-- Spoke: Labs -->
+        <line x1="171" y1="74" x2="213" y2="38" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4"/>
+        <circle cx="224" cy="28" r="26" fill="#7c3aed" opacity="0.9"/>
+        <text x="224" y="24" font-size="8" fill="white" text-anchor="middle">Micro</text>
+        <text x="224" y="36" font-size="8" fill="white" text-anchor="middle">Labs</text>
+
+        <!-- Spoke: Study Plan -->
+        <line x1="135" y1="136" x2="135" y2="172" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4"/>
+        <circle cx="135" cy="184" r="26" fill="#059669" opacity="0.9"/>
+        <text x="135" y="180" font-size="8" fill="white" text-anchor="middle">Study</text>
+        <text x="135" y="192" font-size="8" fill="white" text-anchor="middle">Planner</text>
+
+        <!-- Spoke: MCP -->
+        <line x1="99" y1="120" x2="48" y2="162" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4"/>
+        <circle cx="36" cy="174" r="26" fill="#d97706" opacity="0.9"/>
+        <text x="36" y="170" font-size="8" fill="white" text-anchor="middle">MCP</text>
+        <text x="36" y="182" font-size="8" fill="white" text-anchor="middle">Servers</text>
+
+        <!-- Spoke: VS Code -->
+        <line x1="171" y1="120" x2="222" y2="162" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4"/>
+        <circle cx="234" cy="174" r="26" fill="#0f172a" opacity="0.9"/>
+        <text x="234" y="170" font-size="8" fill="white" text-anchor="middle">GitHub</text>
+        <text x="234" y="182" font-size="8" fill="white" text-anchor="middle">Copilot</text>
+      </svg>
+    </div>
+  </div>
+  <div class="caption">
+    Cert Buddy is an AI-powered study companion that lives inside VS Code. It uses GitHub Copilot, exam-specific
+    prompts and skills, and MCP servers to ground its output in current documentation. First it generates a
+    workspace for the exam you choose. Then that workspace gives you one exam-specific buddy agent with three
+    specialist helpers for questions, labs, and study planning.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 7 — PRACTICE QUESTIONS (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(160deg,#f0fdf4 0%,#bbf7d0 100%);">
+    <svg width="640" height="300" viewBox="0 0 640 300">
+      <!-- Background -->
+      <rect width="640" height="300" fill="#f0fdf4"/>
+      <!-- Soft hills -->
+      <ellipse cx="160" cy="310" rx="220" ry="90" fill="#bbf7d0" opacity="0.6"/>
+      <ellipse cx="500" cy="310" rx="200" ry="80" fill="#bbf7d0" opacity="0.5"/>
+
+      <!-- Certy at a podium / quiz show host style -->
+      <!-- Podium -->
+      <rect x="280" y="210" width="80" height="55" rx="6" fill="#166534"/>
+      <rect x="265" y="208" width="110" height="10" rx="4" fill="#14532d"/>
+      <!-- Microphone on podium -->
+      <rect x="318" y="185" width="4" height="26" fill="#374151"/>
+      <ellipse cx="320" cy="182" rx="8" ry="10" fill="#6b7280"/>
+
+      <!-- Certy (smaller, at podium) -->
+      <circle cx="320" cy="165" r="30" fill="#1d4ed8"/>
+      <circle cx="310" cy="162" r="9" fill="white"/>
+      <circle cx="330" cy="162" r="9" fill="white"/>
+      <circle cx="311" cy="163" r="5" fill="#1e3a8a"/>
+      <circle cx="331" cy="163" r="5" fill="#1e3a8a"/>
+      <polygon points="320,172 315,178 325,178" fill="#f59e0b"/>
+
+      <!-- Question card floating left -->
+      <rect x="30" y="60" width="220" height="170" rx="10" fill="white" stroke="#059669" stroke-width="2.5"
+            filter="drop-shadow(2px 4px 8px rgba(0,0,0,0.12))"/>
+      <rect x="30" y="60" width="220" height="28" rx="10" fill="#059669"/>
+      <text x="140" y="79" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Practice Question</text>
+      <text x="140" y="106" font-size="9" fill="#374151" text-anchor="middle">Contoso is building a customer</text>
+      <text x="140" y="118" font-size="9" fill="#374151" text-anchor="middle">support chatbot. Which Azure</text>
+      <text x="140" y="130" font-size="9" fill="#374151" text-anchor="middle">AI service should they use?</text>
+      <!-- Options -->
+      <rect x="44" y="142" width="192" height="16" rx="4" fill="#f0fdf4"/>
+      <text x="52" y="153" font-size="8" fill="#374151">A. Azure AI Vision</text>
+      <rect x="44" y="162" width="192" height="16" rx="4" fill="#dcfce7"/>
+      <text x="52" y="173" font-size="8" fill="#15803d" font-weight="bold">B. Azure AI Language ✓</text>
+      <rect x="44" y="182" width="192" height="16" rx="4" fill="#f0fdf4"/>
+      <text x="52" y="193" font-size="8" fill="#374151">C. Azure AI Document Intelligence</text>
+      <rect x="44" y="202" width="192" height="16" rx="4" fill="#f0fdf4"/>
+      <text x="52" y="213" font-size="8" fill="#374151">D. Azure AI Anomaly Detector</text>
+
+      <!-- Alex (student) reacting positively on the right -->
+      <ellipse cx="540" cy="230" rx="32" ry="40" fill="#fde68a"/>
+      <circle cx="540" cy="188" r="30" fill="#fde68a"/>
+      <!-- Star eyes (happy) -->
+      <text x="527" y="193" font-size="16" fill="#f59e0b">★</text>
+      <text x="543" y="193" font-size="16" fill="#f59e0b">★</text>
+      <!-- Big smile -->
+      <path d="M530 205 Q540 214 550 205" stroke="#92400e" stroke-width="2.5" fill="none"/>
+      <!-- Thumbs up arm -->
+      <line x1="572" y1="215" x2="598" y2="195" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
+      <ellipse cx="603" cy="191" rx="10" ry="12" fill="#f59e0b"/>
+      <!-- Speech bubble: "Correct!" -->
+      <rect x="460" y="120" width="110" height="38" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+      <text x="515" y="136" font-size="11" fill="#166534" text-anchor="middle" font-weight="bold">Correct! 🎉</text>
+      <text x="515" y="150" font-size="9" fill="#166534" text-anchor="middle">700 / 1000 target!</text>
+      <polygon points="475,158 465,170 478,165" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="caption">
+    "First," said Certy, "let us practise some questions." For this guide, Certy chose <strong>AI-102</strong>
+    as the example exam. A card appeared, describing a scenario at a fictional
+    company called Contoso. "Read the scenario carefully," Certy advised, "then choose the best answer — there
+    is always exactly one correct option." Alex answered and heard, "Correct! Azure AI Language powers
+    question answering and conversational language understanding — ideal for chatbots." With each question,
+    Alex began to see patterns.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 8 — CONCEPT: PRACTICE QUESTIONS (info slide)
+══════════════════════════════════════════════════════════ -->
+<div class="page slide">
+  <div class="slide-header"><h2>Practice Questions</h2></div>
+  <div class="slide-divider"></div>
+  <div class="slide-body">
+    <div class="slide-bullets">
+      <ul>
+        <li>Scenario-first format
+          <span>Every question opens with a workplace scenario</span>
+        </li>
+        <li>Exactly 4 options (A–D)
+          <span>Plausible distractors use real services or features for the chosen exam</span>
+        </li>
+        <li>One correct answer per question
+          <span>Tests knowledge, not trick wording</span>
+        </li>
+        <li>Detailed rationale after you answer
+          <span>Explains why each option is right or wrong</span>
+        </li>
+        <li>Grounded in Microsoft Learn
+          <span>Via Context7 MCP — with current terminology for that certification</span>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-diagram">
+      <svg width="260" height="200" viewBox="0 0 260 200">
+        <!-- Card visual -->
+        <rect x="10" y="10" width="240" height="180" rx="10" fill="white" stroke="#059669" stroke-width="2"
+              filter="drop-shadow(1px 2px 6px rgba(0,0,0,0.1))"/>
+        <rect x="10" y="10" width="240" height="32" rx="10" fill="#059669"/>
+        <text x="130" y="32" font-size="11" fill="white" text-anchor="middle" font-weight="bold">
+          Practice Question #1
+        </text>
+        <!-- Scenario text lines -->
+        <rect x="22" y="52" width="216" height="8" rx="3" fill="#e2e8f0"/>
+        <rect x="22" y="64" width="180" height="8" rx="3" fill="#e2e8f0"/>
+        <rect x="22" y="76" width="200" height="8" rx="3" fill="#e2e8f0"/>
+        <text x="130" y="58" font-size="7" fill="#6b7280" text-anchor="middle">Scenario (realistic workplace situation for the exam)</text>
+
+        <!-- Options -->
+        <rect x="22" y="96" width="216" height="16" rx="4" fill="#f9fafb"/>
+        <text x="30" y="107" font-size="8" fill="#374151">A. Option (plausible but incorrect)</text>
+        <rect x="22" y="116" width="216" height="16" rx="4" fill="#dcfce7"/>
+        <text x="30" y="127" font-size="8" fill="#15803d" font-weight="bold">B. Correct answer ✓</text>
+        <rect x="22" y="136" width="216" height="16" rx="4" fill="#f9fafb"/>
+        <text x="30" y="147" font-size="8" fill="#374151">C. Option (related but wrong feature)</text>
+        <rect x="22" y="156" width="216" height="16" rx="4" fill="#f9fafb"/>
+        <text x="30" y="167" font-size="8" fill="#374151">D. Option (different skill area)</text>
+
+        <!-- Badge -->
+        <rect x="175" y="176" width="65" height="10" rx="4" fill="#dcfce7"/>
+        <text x="207" y="184" font-size="7" fill="#15803d" text-anchor="middle">Microsoft Learn ✓</text>
+      </svg>
+    </div>
+  </div>
+  <div class="caption">
+    Every practice question follows strict exam-style rules: a workplace scenario comes first, then four
+    plausible options using real product names from the chosen exam domain. After you respond, Cert Buddy reveals the correct answer
+    with a full rationale — explaining not just which option is right, but <em>why</em> the others are wrong.
+    Questions are generated on demand, so you never see the same question twice.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 9 — MICRO-LABS (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(160deg,#ede9fe 0%,#c4b5fd 100%);">
+    <svg width="640" height="300" viewBox="0 0 640 300">
+      <!-- Background -->
+      <rect width="640" height="300" fill="#ede9fe"/>
+
+      <!-- Terminal / lab window -->
+      <rect x="60" y="30" width="360" height="230" rx="10" fill="#0f172a"
+            filter="drop-shadow(3px 6px 16px rgba(0,0,0,0.25))"/>
+      <!-- Title bar -->
+      <rect x="60" y="30" width="360" height="28" rx="10" fill="#1e1b4b"/>
+      <circle cx="82" cy="44" r="6" fill="#ef4444"/>
+      <circle cx="100" cy="44" r="6" fill="#f59e0b"/>
+      <circle cx="118" cy="44" r="6" fill="#22c55e"/>
+      <text x="240" y="49" font-size="9" fill="#94a3b8" text-anchor="middle">Lab: Create Azure AI Language Resource</text>
+
+      <!-- Terminal lines -->
+      <text x="78" y="76" font-size="9" fill="#22c55e" font-family="Courier New, monospace">$ az group create \</text>
+      <text x="78" y="90" font-size="9" fill="#22c55e" font-family="Courier New, monospace">  --name rg-ai102-lab \</text>
+      <text x="78" y="104" font-size="9" fill="#22c55e" font-family="Courier New, monospace">  --location eastus</text>
+      <text x="78" y="122" font-size="9" fill="#94a3b8" font-family="Courier New, monospace">{ "id": "/subscriptions/...",</text>
+      <text x="78" y="136" font-size="9" fill="#94a3b8" font-family="Courier New, monospace">  "name": "rg-ai102-lab",</text>
+      <text x="78" y="150" font-size="9" fill="#94a3b8" font-family="Courier New, monospace">  "provisioningState": "Succeeded" }</text>
+      <text x="78" y="168" font-size="9" fill="#22c55e" font-family="Courier New, monospace">$ az cognitiveservices account create \</text>
+      <text x="78" y="182" font-size="9" fill="#22c55e" font-family="Courier New, monospace">  --name my-lang-service \</text>
+      <text x="78" y="196" font-size="9" fill="#22c55e" font-family="Courier New, monospace">  --kind TextAnalytics ...</text>
+      <text x="78" y="214" font-size="9" fill="#fbbf24" font-family="Courier New, monospace">✔ Validation passed!</text>
+      <text x="78" y="228" font-size="9" fill="#22c55e" font-family="Courier New, monospace">▌</text>
+
+      <!-- Certy watching / coaching -->
+      <circle cx="510" cy="150" r="46" fill="#1d4ed8"/>
+      <!-- Ear tufts -->
+      <polygon points="485,112 477,86 495,110" fill="#1d4ed8"/>
+      <polygon points="535,112 543,86 525,110" fill="#1d4ed8"/>
+      <!-- Eyes -->
+      <circle cx="496" cy="147" r="14" fill="white"/>
+      <circle cx="524" cy="147" r="14" fill="white"/>
+      <circle cx="498" cy="149" r="8" fill="#1e3a8a"/>
+      <circle cx="526" cy="149" r="8" fill="#1e3a8a"/>
+      <circle cx="500" cy="146" r="2.5" fill="white"/>
+      <circle cx="528" cy="146" r="2.5" fill="white"/>
+      <polygon points="510,160 504,167 516,167" fill="#f59e0b"/>
+      <!-- Timer clock icon above Certy -->
+      <circle cx="510" cy="88" r="18" fill="white" stroke="#7c3aed" stroke-width="2"/>
+      <text x="510" y="93" font-size="14" fill="#7c3aed" text-anchor="middle">⏱</text>
+      <text x="510" y="115" font-size="9" fill="#581c87" text-anchor="middle" font-weight="bold">15 min</text>
+
+      <!-- Tick / validation badge -->
+      <circle cx="568" cy="220" r="22" fill="#22c55e"/>
+      <text x="568" y="227" font-size="18" fill="white" text-anchor="middle">✓</text>
+      <!-- Ground -->
+      <rect x="0" y="280" width="640" height="20" fill="#7c3aed" opacity="0.2" rx="4"/>
+    </svg>
+  </div>
+  <div class="caption">
+    "Questions are great," said Alex, "but I learn by doing." Certy nodded wisely. "Then let us run a
+    <strong>hands-on lab</strong>." For exams like AI-102 and AZ-204, Cert Buddy can generate short, validated labs.
+    In this example, the terminal window shows an AI-102 lab that creates a real Azure AI Language resource.
+    Each step has an explicit validation check, so Alex knows exactly when the task is done. "And do not worry,"
+    Certy added, "there are cleanup steps at the end so you do not accidentally leave resources running up charges."
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 10 — CONCEPT: MICRO-LABS (info slide)
+══════════════════════════════════════════════════════════ -->
+<div class="page slide">
+  <div class="slide-header"><h2>Hands-on Labs</h2></div>
+  <div class="slide-divider"></div>
+  <div class="slide-body">
+    <div class="slide-bullets">
+      <ul>
+        <li>10–20 minutes each
+          <span>Single, focused learning objective per lab</span>
+        </li>
+        <li>Available when the exam supports hands-on work
+          <span>Especially useful for Azure exams such as AI-102 and AZ-204</span>
+        </li>
+        <li>Real commands and validation
+          <span>Azure exams use Azure MCP for accuracy checks</span>
+        </li>
+        <li>Explicit validation steps
+          <span>Know exactly when each task succeeds</span>
+        </li>
+        <li>Cleanup instructions included
+          <span>No surprise Azure charges after the lab</span>
+        </li>
+        <li>Cost warnings upfront
+          <span>Free tier where possible; charges flagged clearly</span>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-diagram">
+      <svg width="260" height="200" viewBox="0 0 260 200">
+        <!-- Lab steps flow -->
+        <!-- Step boxes connected by arrows -->
+        <rect x="80" y="8" width="100" height="28" rx="6" fill="#7c3aed"/>
+        <text x="130" y="27" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Prerequisites</text>
+
+        <line x1="130" y1="36" x2="130" y2="50" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowPurple)"/>
+        <rect x="80" y="51" width="100" height="28" rx="6" fill="#1d4ed8"/>
+        <text x="130" y="70" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Task Steps</text>
+
+        <line x1="130" y1="79" x2="130" y2="93" stroke="#1d4ed8" stroke-width="2"/>
+        <rect x="80" y="94" width="100" height="28" rx="6" fill="#0891b2"/>
+        <text x="130" y="113" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Validation ✓</text>
+
+        <line x1="130" y1="122" x2="130" y2="136" stroke="#0891b2" stroke-width="2"/>
+        <rect x="80" y="137" width="100" height="28" rx="6" fill="#059669"/>
+        <text x="130" y="156" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Expected Output</text>
+
+        <line x1="130" y1="165" x2="130" y2="179" stroke="#059669" stroke-width="2"/>
+        <rect x="80" y="180" width="100" height="16" rx="6" fill="#dc2626"/>
+        <text x="130" y="192" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Cleanup 🧹</text>
+
+        <!-- Timer badge -->
+        <circle cx="30" cy="100" r="24" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+        <text x="30" y="95" font-size="9" fill="#92400e" text-anchor="middle">10–20</text>
+        <text x="30" y="108" font-size="8" fill="#92400e" text-anchor="middle">minutes</text>
+
+        <!-- Azure logo hint -->
+        <circle cx="230" cy="100" r="24" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+        <text x="230" y="95" font-size="8" fill="#0c4a6e" text-anchor="middle">Azure</text>
+        <text x="230" y="108" font-size="8" fill="#0c4a6e" text-anchor="middle">MCP ✓</text>
+      </svg>
+    </div>
+  </div>
+  <div class="caption">
+    A hands-on lab is a short exercise with a single learning objective. In generated workspaces for practical exams,
+    each lab follows the same structure: prerequisites, numbered task steps, explicit validation checks, expected
+    command output, and cleanup. For Azure exams, commands are validated with Azure MCP before delivery, so you can
+    trust they work on the current version of the Azure CLI.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 11 — STUDY PLANNER (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(160deg,#fff7ed 0%,#fed7aa 100%);">
+    <svg width="640" height="300" viewBox="0 0 640 300">
+      <rect width="640" height="300" fill="#fff7ed"/>
+
+      <!-- Calendar / planner on a desk -->
+      <rect x="50" y="60" width="300" height="200" rx="10" fill="white"
+            stroke="#f97316" stroke-width="2.5"
+            filter="drop-shadow(2px 4px 12px rgba(0,0,0,0.1))"/>
+      <!-- Header -->
+      <rect x="50" y="60" width="300" height="36" rx="10" fill="#f97316"/>
+      <text x="200" y="84" font-size="13" fill="white" text-anchor="middle" font-weight="bold">📅 My AI-102 Study Plan</text>
+
+      <!-- Week grid -->
+      <!-- Headers -->
+      <text x="78" y="115" font-size="9" fill="#6b7280" text-anchor="middle">MON</text>
+      <text x="120" y="115" font-size="9" fill="#6b7280" text-anchor="middle">TUE</text>
+      <text x="162" y="115" font-size="9" fill="#6b7280" text-anchor="middle">WED</text>
+      <text x="204" y="115" font-size="9" fill="#6b7280" text-anchor="middle">THU</text>
+      <text x="246" y="115" font-size="9" fill="#6b7280" text-anchor="middle">FRI</text>
+      <text x="288" y="115" font-size="9" fill="#6b7280" text-anchor="middle">SAT</text>
+      <text x="330" y="115" font-size="9" fill="#6b7280" text-anchor="middle">SUN</text>
+
+      <!-- Row 1: Azure AI services (blue - weak area) -->
+      <rect x="58" y="120" width="40" height="30" rx="4" fill="#1d4ed8"/>
+      <text x="78" y="139" font-size="7" fill="white" text-anchor="middle">AI Vision</text>
+      <rect x="100" y="120" width="40" height="30" rx="4" fill="#1d4ed8"/>
+      <text x="120" y="139" font-size="7" fill="white" text-anchor="middle">AI Lang.</text>
+      <rect x="142" y="120" width="40" height="30" rx="4" fill="#7c3aed"/>
+      <text x="162" y="139" font-size="7" fill="white" text-anchor="middle">2 × Lab</text>
+      <rect x="184" y="120" width="40" height="30" rx="4" fill="#1d4ed8"/>
+      <text x="204" y="139" font-size="7" fill="white" text-anchor="middle">AI Speech</text>
+      <rect x="226" y="120" width="40" height="30" rx="4" fill="#7c3aed"/>
+      <text x="246" y="139" font-size="7" fill="white" text-anchor="middle">2 × Lab</text>
+      <rect x="268" y="120" width="40" height="30" rx="4" fill="#059669"/>
+      <text x="288" y="139" font-size="7" fill="white" text-anchor="middle">Review</text>
+      <rect x="310" y="120" width="40" height="30" rx="4" fill="#e5e7eb"/>
+      <text x="330" y="139" font-size="7" fill="#9ca3af" text-anchor="middle">Rest</text>
+
+      <!-- Row 2: OpenAI -->
+      <rect x="58" y="158" width="40" height="30" rx="4" fill="#1d4ed8"/>
+      <text x="78" y="177" font-size="7" fill="white" text-anchor="middle">OpenAI</text>
+      <rect x="100" y="158" width="40" height="30" rx="4" fill="#7c3aed"/>
+      <text x="120" y="177" font-size="7" fill="white" text-anchor="middle">Lab</text>
+      <rect x="142" y="158" width="40" height="30" rx="4" fill="#1d4ed8"/>
+      <text x="162" y="177" font-size="7" fill="white" text-anchor="middle">Security</text>
+      <rect x="184" y="158" width="40" height="30" rx="4" fill="#1d4ed8"/>
+      <text x="204" y="177" font-size="7" fill="white" text-anchor="middle">RAI</text>
+      <rect x="226" y="158" width="40" height="30" rx="4" fill="#7c3aed"/>
+      <text x="246" y="177" font-size="7" fill="white" text-anchor="middle">Lab</text>
+      <rect x="268" y="158" width="40" height="30" rx="4" fill="#d97706"/>
+      <text x="288" y="177" font-size="7" fill="white" text-anchor="middle">Mock 1</text>
+      <rect x="310" y="158" width="40" height="30" rx="4" fill="#dc2626"/>
+      <text x="330" y="177" font-size="7" fill="white" text-anchor="middle">EXAM!</text>
+
+      <!-- Legend -->
+      <rect x="58" y="200" width="10" height="10" rx="2" fill="#1d4ed8"/>
+      <text x="72" y="209" font-size="8" fill="#555">Concepts</text>
+      <rect x="120" y="200" width="10" height="10" rx="2" fill="#7c3aed"/>
+      <text x="134" y="209" font-size="8" fill="#555">Lab</text>
+      <rect x="170" y="200" width="10" height="10" rx="2" fill="#059669"/>
+      <text x="184" y="209" font-size="8" fill="#555">Review</text>
+      <rect x="230" y="200" width="10" height="10" rx="2" fill="#d97706"/>
+      <text x="244" y="209" font-size="8" fill="#555">Mock exam</text>
+
+      <!-- Certy with clipboard -->
+      <ellipse cx="535" cy="220" rx="36" ry="44" fill="#1d4ed8"/>
+      <circle cx="535" cy="170" r="36" fill="#1d4ed8"/>
+      <circle cx="524" cy="167" r="11" fill="white"/>
+      <circle cx="546" cy="167" r="11" fill="white"/>
+      <circle cx="525" cy="169" r="6" fill="#1e3a8a"/>
+      <circle cx="547" cy="169" r="6" fill="#1e3a8a"/>
+      <polygon points="535,179 529,186 541,186" fill="#f59e0b"/>
+      <!-- Clipboard -->
+      <rect x="556" y="175" width="56" height="66" rx="5" fill="#fef9c3" stroke="#f59e0b" stroke-width="2"/>
+      <rect x="568" y="168" width="32" height="12" rx="4" fill="#f59e0b"/>
+      <line x1="562" y1="196" x2="606" y2="196" stroke="#e2e8f0" stroke-width="1.5"/>
+      <line x1="562" y1="208" x2="606" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+      <line x1="562" y1="220" x2="595" y2="220" stroke="#e2e8f0" stroke-width="1.5"/>
+      <text x="584" y="193" font-size="7" fill="#374151" text-anchor="middle">Week 1</text>
+      <text x="584" y="205" font-size="7" fill="#374151" text-anchor="middle">Week 2</text>
+      <text x="584" y="218" font-size="7" fill="#374151" text-anchor="middle">Exam ✓</text>
+    </svg>
+  </div>
+  <div class="caption">
+    After answering a set of confidence questions, Certy appeared with a clipboard. "Based on your
+    answers, I have built you a <strong>personalised study plan</strong>," Certy announced. "Whatever exam you choose,
+    I can rank the weak areas first, estimate the hours, and link each topic to the right Microsoft Learn material."
+    In this guide, the sample plan is for AI-102, so the calendar includes Azure AI Vision, Azure AI Language,
+    and Azure OpenAI Service topics. Alex looked at the two-week calendar and nodded. It felt achievable.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 12 — CONCEPT: STUDY PLANNER (info slide)
+══════════════════════════════════════════════════════════ -->
+<div class="page slide">
+  <div class="slide-header"><h2>The Study Planner</h2></div>
+  <div class="slide-divider"></div>
+  <div class="slide-body">
+    <div class="slide-bullets">
+      <ul>
+        <li>Confidence assessment first
+          <span>Rate yourself on each exam skill area (1–5)</span>
+        </li>
+        <li>Weak areas prioritised
+          <span>Low-confidence, high-weight topics get more time</span>
+        </li>
+        <li>Estimated study hours
+          <span>Per skill area, based on weight and your confidence</span>
+        </li>
+        <li>Microsoft Learn links
+          <span>Direct module links for every topic</span>
+        </li>
+        <li>Day-by-day schedule
+          <span>Balanced across your available time before exam</span>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-diagram">
+      <svg width="260" height="200" viewBox="0 0 260 200">
+        <!-- Bar chart: confidence vs hours -->
+        <text x="130" y="16" font-size="10" fill="#374151" text-anchor="middle" font-weight="bold">Hours Allocated</text>
+        <!-- Axis -->
+        <line x1="40" y1="20" x2="40" y2="170" stroke="#d1d5db" stroke-width="1.5"/>
+        <line x1="40" y1="170" x2="250" y2="170" stroke="#d1d5db" stroke-width="1.5"/>
+
+        <!-- Bars (inverted confidence → more hours for weak areas) -->
+        <!-- Plan & Manage: confidence 3/5 → moderate -->
+        <rect x="52" y="90" width="32" height="80" fill="#1d4ed8" rx="3"/>
+        <text x="68" y="185" font-size="7" fill="#555" text-anchor="middle">Plan</text>
+        <text x="68" y="83" font-size="8" fill="#1d4ed8" text-anchor="middle">8h</text>
+
+        <!-- Decision Support: confidence 4/5 → less -->
+        <rect x="98" y="120" width="32" height="50" fill="#7c3aed" rx="3"/>
+        <text x="114" y="185" font-size="7" fill="#555" text-anchor="middle">Decision</text>
+        <text x="114" y="113" font-size="8" fill="#7c3aed" text-anchor="middle">5h</text>
+
+        <!-- Computer Vision: confidence 2/5 → most -->
+        <rect x="144" y="50" width="32" height="120" fill="#059669" rx="3"/>
+        <text x="160" y="185" font-size="7" fill="#555" text-anchor="middle">Vision</text>
+        <text x="160" y="43" font-size="8" fill="#059669" text-anchor="middle">12h</text>
+
+        <!-- NLP: confidence 2/5 → most -->
+        <rect x="190" y="60" width="32" height="110" fill="#d97706" rx="3"/>
+        <text x="206" y="185" font-size="7" fill="#555" text-anchor="middle">NLP</text>
+        <text x="206" y="53" font-size="8" fill="#d97706" text-anchor="middle">11h</text>
+
+        <!-- Y axis labels -->
+        <text x="34" y="173" font-size="7" fill="#9ca3af" text-anchor="end">0</text>
+        <text x="34" y="123" font-size="7" fill="#9ca3af" text-anchor="end">5</text>
+        <text x="34" y="73" font-size="7" fill="#9ca3af" text-anchor="end">10</text>
+        <text x="34" y="25" font-size="7" fill="#9ca3af" text-anchor="end">12</text>
+
+        <!-- Note -->
+        <text x="130" y="198" font-size="7" fill="#9ca3af" text-anchor="middle">
+          Lower confidence → more study hours
+        </text>
+      </svg>
+    </div>
+  </div>
+  <div class="caption">
+    The study planner begins with a short self-assessment: you rate your confidence across the exam skill areas.
+    Cert Buddy then builds a schedule that prioritises low-confidence, high-weight topics, estimates the hours needed,
+    and links each session directly to the matching Microsoft Learn module — so you always know exactly what to study next.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 13 — GENERATOR (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(160deg,#f0f9ff 0%,#bae6fd 100%);">
+    <svg width="640" height="300" viewBox="0 0 640 300">
+      <rect width="640" height="300" fill="#f0f9ff"/>
+
+      <!-- Network pipes / pipes connecting Certy to generator inputs -->
+      <line x1="320" y1="145" x2="120" y2="80" stroke="#0ea5e9" stroke-width="4" stroke-dasharray="8 4"/>
+      <line x1="320" y1="145" x2="520" y2="80" stroke="#0ea5e9" stroke-width="4" stroke-dasharray="8 4"/>
+      <line x1="320" y1="145" x2="120" y2="230" stroke="#0ea5e9" stroke-width="4" stroke-dasharray="8 4"/>
+      <line x1="320" y1="145" x2="520" y2="230" stroke="#0ea5e9" stroke-width="4" stroke-dasharray="8 4"/>
+
+      <!-- Certy at centre -->
+      <circle cx="320" cy="145" r="48" fill="#1d4ed8"
+              filter="drop-shadow(2px 4px 12px rgba(29,86,219,0.4))"/>
+      <circle cx="307" cy="141" r="13" fill="white"/>
+      <circle cx="333" cy="141" r="13" fill="white"/>
+      <circle cx="309" cy="143" r="7" fill="#1e3a8a"/>
+      <circle cx="335" cy="143" r="7" fill="#1e3a8a"/>
+      <circle cx="311" cy="140" r="2.5" fill="white"/>
+      <circle cx="337" cy="140" r="2.5" fill="white"/>
+      <polygon points="320,155 314,163 326,163" fill="#f59e0b"/>
+
+      <!-- Exam code box -->
+      <rect x="30" y="44" width="130" height="50" rx="8" fill="white" stroke="#0ea5e9" stroke-width="2"
+            filter="drop-shadow(1px 2px 6px rgba(0,0,0,0.1))"/>
+      <text x="95" y="64" font-size="10" fill="#0369a1" text-anchor="middle" font-weight="bold">Exam Code</text>
+      <text x="95" y="78" font-size="10" fill="#0369a1" text-anchor="middle" font-weight="bold">AI-102</text>
+      <text x="95" y="90" font-size="8" fill="#64748b" text-anchor="middle">or AZ-204, SC-900...</text>
+
+      <!-- Exam name box -->
+      <rect x="480" y="44" width="130" height="50" rx="8" fill="white" stroke="#0ea5e9" stroke-width="2"
+            filter="drop-shadow(1px 2px 6px rgba(0,0,0,0.1))"/>
+      <text x="545" y="64" font-size="10" fill="#0369a1" text-anchor="middle" font-weight="bold">Exam Name</text>
+      <text x="545" y="78" font-size="9" fill="#0369a1" text-anchor="middle">Designing and</text>
+      <text x="545" y="90" font-size="8" fill="#64748b" text-anchor="middle">Implementing Azure AI</text>
+
+      <!-- Domain box -->
+      <rect x="30" y="210" width="130" height="50" rx="8" fill="white" stroke="#0ea5e9" stroke-width="2"
+            filter="drop-shadow(1px 2px 6px rgba(0,0,0,0.1))"/>
+      <text x="95" y="230" font-size="10" fill="#0369a1" text-anchor="middle" font-weight="bold">Domain</text>
+      <text x="95" y="244" font-size="10" fill="#0369a1" text-anchor="middle">Azure AI</text>
+      <text x="95" y="256" font-size="8" fill="#64748b" text-anchor="middle">or security, data, M365</text>
+
+      <!-- Workspace box -->
+      <rect x="480" y="210" width="130" height="50" rx="8" fill="white" stroke="#0ea5e9" stroke-width="2"
+            filter="drop-shadow(1px 2px 6px rgba(0,0,0,0.1))"/>
+      <text x="545" y="230" font-size="10" fill="#0369a1" text-anchor="middle" font-weight="bold">Workspace</text>
+      <text x="545" y="244" font-size="10" fill="#0369a1" text-anchor="middle">ai102-cert-buddy</text>
+      <text x="545" y="256" font-size="8" fill="#64748b" text-anchor="middle">agent + skills + refs</text>
+
+      <!-- Ground -->
+      <rect x="0" y="282" width="640" height="18" fill="#0ea5e9" opacity="0.15" rx="4"/>
+    </svg>
+  </div>
+  <div class="caption">
+    "How do I make this work for a specific exam?" Alex asked.
+    Certy twirled, and four glowing boxes lit up: <strong>exam code</strong>, <strong>exam name</strong>,
+    <strong>domain</strong>, and <strong>workspace</strong>. "First, you ask the generator to build an exam-specific
+    Cert Buddy," Certy explained. "For example, you can create an AI-102 workspace, an AZ-204 workspace,
+    or an SC-900 workspace. The structure stays the same, but the content changes to match the exam."
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+      PAGE 14 — CONCEPT: GENERATED STRUCTURE
+══════════════════════════════════════════════════════════ -->
+<div class="page slide">
+    <div class="slide-header"><h2>Generated Structure</h2></div>
+  <div class="slide-divider"></div>
+  <div class="slide-body">
+    <div class="slide-bullets">
+      <ul>
+        <li>Start with the generator agent
+          <span><code>@cert-buddy-generator Create a study buddy for AI-102</code></span>
+        </li>
+        <li>Or use the Python script
+          <span><code>python generate_cert_buddy.py --exam AI-102 --name "Designing and Implementing a Microsoft Azure AI Solution" --domain "Azure AI" --output ../ai102-cert-buddy</code></span>
+        </li>
+        <li>The generated workspace always includes one exam agent
+          <span><code>@ai102-cert-buddy-agent</code> for the AI-102 example</span>
+        </li>
+        <li>And three specialist helpers inside that workspace
+          <span>Item creator, lab creator, and study planner</span>
+        </li>
+        <li>Folder structure stays consistent across exams
+          <span>Agent, prompts, skills, references, and MCP config</span>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-diagram">
+      <svg width="260" height="200" viewBox="0 0 260 200">
+        <rect x="50" y="10" width="160" height="26" rx="6" fill="#0f172a"/>
+        <text x="130" y="27" font-size="10" fill="#e2e8f0" text-anchor="middle" font-weight="bold">ai102-cert-buddy/</text>
+
+        <rect x="50" y="46" width="160" height="22" rx="5" fill="#1d4ed8"/>
+        <text x="130" y="61" font-size="9" fill="white" text-anchor="middle">.github/agents/ai102-cert-buddy-agent.agent.md</text>
+
+        <rect x="50" y="76" width="160" height="22" rx="5" fill="#7c3aed"/>
+        <text x="130" y="91" font-size="9" fill="white" text-anchor="middle">.github/prompts/ai102-practice-*.prompt.md</text>
+
+        <rect x="50" y="106" width="160" height="40" rx="5" fill="#059669"/>
+        <text x="130" y="121" font-size="9" fill="white" text-anchor="middle">.github/skills/</text>
+        <text x="130" y="134" font-size="8" fill="#dcfce7" text-anchor="middle">ai102-item-creator · ai102-lab-creator</text>
+        <text x="130" y="145" font-size="8" fill="#dcfce7" text-anchor="middle">ai102-study-planner</text>
+
+        <rect x="50" y="154" width="160" height="18" rx="5" fill="#d97706"/>
+        <text x="130" y="166" font-size="8" fill="white" text-anchor="middle">references/ai102-objectives.md + style guides</text>
+
+        <rect x="50" y="178" width="160" height="12" rx="5" fill="#e2e8f0"/>
+        <text x="130" y="187" font-size="7" fill="#475569" text-anchor="middle">.vscode/mcp.json + README.md + .gitignore</text>
+      </svg>
+    </div>
+  </div>
+  <div class="caption">
+    The generator creates the same high-quality shape for every exam: one exam-specific buddy agent, two prompt
+    templates, three specialist helpers, reference files, and MCP configuration. The names change to match the
+    exam code, so AI-102 becomes <code>ai102-cert-buddy-agent</code>, <code>ai102-item-creator</code>,
+    <code>ai102-lab-creator</code>, and <code>ai102-study-planner</code>.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 15 — HAPPY ENDING (story)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="illustration" style="background: linear-gradient(160deg,#fef9c3 0%,#fde68a 40%,#fbbf24 100%);">
+    <svg width="640" height="300" viewBox="0 0 640 300">
+      <!-- Bright celebratory background -->
+      <circle cx="320" cy="-30" r="180" fill="#fef08a" opacity="0.6"/>
+      <!-- Confetti -->
+      <rect x="80" y="30" width="14" height="6" rx="2" fill="#ef4444" transform="rotate(-25,87,33)"/>
+      <rect x="150" y="50" width="12" height="5" rx="2" fill="#3b82f6" transform="rotate(15,156,52)"/>
+      <rect x="420" y="20" width="14" height="6" rx="2" fill="#22c55e" transform="rotate(35,427,23)"/>
+      <rect x="520" y="55" width="10" height="5" rx="2" fill="#f97316" transform="rotate(-18,525,57)"/>
+      <rect x="240" y="10" width="12" height="5" rx="2" fill="#8b5cf6" transform="rotate(10,246,12)"/>
+      <rect x="580" y="35" width="10" height="6" rx="2" fill="#ef4444" transform="rotate(-30,585,38)"/>
+      <text x="60" y="50" font-size="20" fill="#fbbf24">✦</text>
+      <text x="570" y="70" font-size="16" fill="#fbbf24">✦</text>
+      <text x="350" y="28" font-size="14" fill="#fbbf24">✦</text>
+
+      <!-- Certificate -->
+      <rect x="200" y="50" width="240" height="160" rx="12" fill="#fef9c3" stroke="#f59e0b" stroke-width="3"
+            filter="drop-shadow(4px 8px 20px rgba(0,0,0,0.15))"/>
+      <!-- Inner border -->
+      <rect x="212" y="62" width="216" height="136" rx="8" fill="none" stroke="#fde68a" stroke-width="1.5"
+            stroke-dasharray="4 3"/>
+      <!-- Crown -->
+      <text x="320" y="100" font-size="28" text-anchor="middle">🏆</text>
+      <text x="320" y="126" font-size="14" fill="#92400e" text-anchor="middle" font-weight="bold">
+        Certificate of Achievement
+      </text>
+      <line x1="235" y1="132" x2="405" y2="132" stroke="#f59e0b" stroke-width="1"/>
+      <text x="320" y="148" font-size="10" fill="#374151" text-anchor="middle">This certifies that</text>
+      <text x="320" y="164" font-size="13" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Alex</text>
+      <text x="320" y="179" font-size="9" fill="#374151" text-anchor="middle">has passed the</text>
+      <text x="320" y="194" font-size="11" fill="#92400e" text-anchor="middle" font-weight="bold">
+        AI-102 Certification
+      </text>
+      <!-- Ribbons -->
+      <line x1="283" y1="210" x2="275" y2="235" stroke="#ef4444" stroke-width="3"/>
+      <line x1="357" y1="210" x2="365" y2="235" stroke="#ef4444" stroke-width="3"/>
+      <path d="M270 228 Q320 238 370 228" stroke="#ef4444" stroke-width="3" fill="none"/>
+
+      <!-- Alex jumping for joy -->
+      <ellipse cx="130" cy="230" rx="28" ry="34" fill="#fde68a" transform="rotate(-5,130,230)"/>
+      <circle cx="125" cy="190" r="28" fill="#fde68a"/>
+      <!-- Arms up in celebration -->
+      <line x1="100" y1="215" x2="72" y2="178" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
+      <line x1="153" y1="215" x2="178" y2="178" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
+      <!-- Star eyes -->
+      <text x="110" y="196" font-size="16" fill="#f59e0b">★</text>
+      <text x="128" y="196" font-size="16" fill="#f59e0b">★</text>
+      <!-- Big grin -->
+      <path d="M112 208 Q125 218 138 208" stroke="#92400e" stroke-width="3" fill="#fde68a"/>
+
+      <!-- Certy celebrating too -->
+      <ellipse cx="520" cy="230" rx="36" ry="44" fill="#1d4ed8"/>
+      <circle cx="520" cy="180" r="38" fill="#1d4ed8"/>
+      <!-- Ear tufts -->
+      <polygon points="497,147 490,120 507,145" fill="#1d4ed8"/>
+      <polygon points="543,147 550,120 533,145" fill="#1d4ed8"/>
+      <!-- Big happy eyes -->
+      <circle cx="508" cy="177" r="13" fill="white"/>
+      <circle cx="532" cy="177" r="13" fill="white"/>
+      <circle cx="510" cy="179" r="7" fill="#1e3a8a"/>
+      <circle cx="534" cy="179" r="7" fill="#1e3a8a"/>
+      <circle cx="512" cy="176" r="2.5" fill="white"/>
+      <circle cx="536" cy="176" r="2.5" fill="white"/>
+      <!-- Happy beak / smile -->
+      <path d="M512 192 Q520 200 528 192" stroke="#92400e" stroke-width="2.5" fill="none"/>
+      <polygon points="520,192 515,200 525,200" fill="#f59e0b"/>
+      <!-- Party hat on Certy -->
+      <polygon points="520,142 505,112 535,112" fill="#ef4444"/>
+      <line x1="520" y1="112" x2="520" y2="100" stroke="#fbbf24" stroke-width="2"/>
+      <circle cx="520" cy="98" r="4" fill="#fbbf24"/>
+      <!-- Stars from Certy -->
+      <text x="556" y="145" font-size="16" fill="#fbbf24">✦</text>
+      <text x="478" y="145" font-size="12" fill="#fbbf24">✦</text>
+    </svg>
+  </div>
+  <div class="caption">
+    Once the AI-102 workspace was generated, Certy showed Alex the three specialist helpers inside it:
+    <strong>item creator</strong> for practice questions, <strong>lab creator</strong> for short hands-on exercises,
+    and <strong>study planner</strong> for a personalised schedule. "You speak to one exam-specific buddy agent," said
+    Certy, "and it routes the work to the right helper for you." Alex grinned. The setup finally made sense.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 16 — GLOSSARY / BACK MATTER
+══════════════════════════════════════════════════════════ -->
+<div class="page" style="min-height:500px;">
+  <div style="padding:40px 60px;">
+    <h2 style="color:#1d4ed8; font-size:28px; margin-bottom:20px;">Examples</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <thead>
+        <tr style="background:#1d4ed8; color:white;">
+          <th style="padding:10px 16px; text-align:left; width:34%;">What to do</th>
+          <th style="padding:10px 16px; text-align:left;">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f8fafc;">
+          <td style="padding:10px 16px; font-weight:600; color:#1d4ed8;">Generate an exam workspace</td>
+          <td style="padding:10px 16px;"><code>@cert-buddy-generator Create a study buddy for AI-102</code></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px; font-weight:600; color:#1d4ed8;">Generate another exam workspace</td>
+          <td style="padding:10px 16px;"><code>@cert-buddy-generator Create a study buddy for AZ-204</code></td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:10px 16px; font-weight:600; color:#1d4ed8;">Generate with Python instead</td>
+          <td style="padding:10px 16px;"><code>python generate_cert_buddy.py --exam AI-102 --name "Designing and Implementing a Microsoft Azure AI Solution" --domain "Azure AI" --output ../ai102-cert-buddy</code></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px; font-weight:600; color:#1d4ed8;">AI-102 item creator example</td>
+          <td style="padding:10px 16px;"><code>@ai102-cert-buddy-agent give me 5 practice questions on Azure AI Vision</code></td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:10px 16px; font-weight:600; color:#1d4ed8;">AI-102 lab creator example</td>
+          <td style="padding:10px 16px;"><code>@ai102-cert-buddy-agent create a 15-minute lab on conversational language understanding</code></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px; font-weight:600; color:#1d4ed8;">AI-102 study planner example</td>
+          <td style="padding:10px 16px;"><code>@ai102-cert-buddy-agent help me create a study plan for AI-102</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:32px; padding:20px; background:#eff6ff; border-radius:8px; border-left:4px solid #1d4ed8;">
+      <p style="font-size:13px; color:#374151; line-height:1.8;">
+        <strong style="color:#1d4ed8;">How the three helpers map to the AI-102 example:</strong>
+        <code>ai102-item-creator</code> powers the practice question request, <code>ai102-lab-creator</code> powers the lab request,
+        and <code>ai102-study-planner</code> powers the study plan request. You talk to <code>@ai102-cert-buddy-agent</code>,
+        and it chooses the right helper automatically.
+      </p>
+    </div>
+
+    <p style="margin-top:24px; font-size:12px; color:#9ca3af; text-align:center;">
+      Cert Buddy · Powered by GitHub Copilot · Illustrated guide updated for any Microsoft certification exam
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
